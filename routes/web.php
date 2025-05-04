@@ -7,6 +7,7 @@ use App\Models\Department;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,35 +27,37 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::get('/', function () {
       //  return 'oooooooooooooo';
         //  $banner = Article::find(3);
-        // // $helpDep = Department::find(2);
+         
         //  $slider = Department::find(1)->articles->where('articles_isactive', 'active');
 
         //  $offers_title = Article::find(4);
         //  $property_title = Article::find(5);
-        //  $setting = Setting::find(1);
-        //  $aboutUs = Article::find(6);
+          $setting = Setting::find(1);
+          $aboutUs = Article::find(1);
+           $ourVision = Article::find(2);
+           $servicesDep=Department::find(2);
+           $services=Department::find(2)->articles->where('articles_isactive', 'active');
         //  $gallary = Department::find(4)->articles->where('articles_isactive', 'active');
         //  $offers = Department::find(3)->articles->where('articles_isactive', 'active');
         //  $buildings = Department::find(5)->articles->where('articles_isactive', 'active');
 
         // $newsbutton = Department::find(7)->articles->where('articles_isactive', 'active')->take(2);
 
-        // return view('welcome', [
-        //     "slider" => $slider,
-        //      "banner" => $banner,
-        //      "offers_title" => $offers_title,
-        //      "property_title" => $property_title,
-        //      "aboutUs" => $aboutUs,
-        //      "gallary" => $gallary,
-        //      "buildings" => $buildings,
-        //      "offers" => $offers,
-        //     // "news" => $news,
-        //      "setting" => $setting,
-        //     // "settingArticle" => $settingArticle,
-        //     // "newsbutton" => $newsbutton
-        // ]);
+        return view('welcome', [
+           // "slider" => $slider,
+            // "banner" => $banner,
+            // "offers_title" => $offers_title,
+            // "property_title" => $property_title,
+             "aboutUs" => $aboutUs,
+             "ourVision" => $ourVision,
+             "setting" => $setting,
+             "servicesDep" => $servicesDep,
+             "services" => $services,
+            // "settingArticle" => $settingArticle,
+            // "newsbutton" => $newsbutton
+        ]);
 
-        return view('welcome');
+       // return view('welcome');
     });
 
     Route::get('/departmentDetails/{id}',function(Request $request){

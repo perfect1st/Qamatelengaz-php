@@ -1,82 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-    <!-- Spinner Start -->
-    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
-    </div>
-    <!-- Spinner End -->
-
-
-    <!-- Topbar Start -->
-    <div class="container-fluid bg-light p-0 left">
-        <div class="row gx-0 d-none d-lg-flex">
-            <div class="col-lg-7 px-5 text-end">
-                <div class="h-100 d-inline-flex align-items-center py-3 me-4">
-                    <strong class="fa fa-map-marker-alt text-primary me-2"></strong>
-                    <strong>
-                        مدينة نصر
-                    </strong>
-                </div>
-                <div class="h-100 d-inline-flex align-items-center py-3">
-                    <strong class="far fa-clock text-primary me-2"></strong>
-                    <strong>Mon - Fri : 09.00 AM - 09.00 PM</strong>
-                </div>
-            </div>
-            <div class="col-lg-5 px-5 text-start">
-                <div class="h-100 d-inline-flex align-items-center py-3 me-4">
-                    <strong class="fa fa-phone-alt text-primary me-2"></strong>
-                    <strong>+012 345 6789</strong>
-                </div>
-                <div class="h-100 d-inline-flex align-items-center">
-                    <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-sm-square bg-white text-primary me-0" href=""><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Topbar End -->
-
-
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
-        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <h2 class="m-0 text-primary">
-                قامات الانجاز 
-            </h2>
-        </a>
-        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link active">الرئيسية</a>
-                <a href="about.html" class="nav-item nav-link">نبذة عنا</a>
-                <a href="service.html" class="nav-item nav-link">الخدمات</a>
-                <a href="project.html" class="nav-item nav-link">Project</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu fade-up m-0">
-                        <a href="feature.html" class="dropdown-item">Feature</a>
-                        <a href="quote.html" class="dropdown-item">Free Quote</a>
-                        <a href="team.html" class="dropdown-item">Our Team</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        <a href="404.html" class="dropdown-item">404 Page</a>
-                    </div>
-                </div>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
-            </div>
-
-            <!-- <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Get A Quote<i class="fa fa-arrow-right ms-3"></i></a> -->
-        </div>
-    </nav>
-    <!-- Navbar End -->
-
-
+    
     <!-- Carousel Start -->
     <div class="container-fluid p-0 pb-5 left">
         <div class="owl-carousel header-carousel position-relative">
@@ -186,24 +111,18 @@
             <div class="row g-0 mx-lg-0">
                 <div class="col-lg-6 ps-lg-0" style="min-height: 400px;">
                     <div class="position-relative h-100">
-                        <img class="position-absolute img-fluid w-100 h-100" src="img/about.jpg" style="object-fit: cover;" alt="">
+                        <img class="position-absolute img-fluid w-100 h-100" src="{{asset('articles/' . $aboutUs->articles_image)}}" style="object-fit: cover;" alt="">
                     </div>
                 </div>
                 <div class="col-lg-6 about-text py-5 wow fadeIn" data-wow-delay="0.5s">
                     <div class="p-lg-5 pe-lg-0">
                         <div class="section-title text-start">
-                            <h1 class="display-5 mb-4">
-                                نبذة عنا
+                            <h1 class="display-5 mb-4 cairo_font">
+                                {{app()->getLocale() == 'ar' ? $aboutUs->articles_title_ar  : $aboutUs->articles_title_en }}
                             </h1>
                         </div>
-                        <p class="mb-4 pb-2">
-                            تأسست شركة قامات الإنجاز للتشغيل والصيانة في المملكة العربية السعودية للمشاركة في
-نمو وتطوير اقتصاد المملكة، وخاصة في مجال التشغيل والصيانة والتنظيف وإدارة المرافق
-التجارية والعامة والخاصة
-قدمت خدمات متميزة في مجالات الصيانة والتشغيل والنظافة وتوريد الموارد البشرية والبناء
-والتشييد وإدارة المرافق والضيافة
-وتوسعت لتشمل مجموعة من مجالات الأعمال، بما في ذلك التشغيل والصيانة والتنظيف
-والضيافة لجميع القطاعات، مع موظفين مؤهلين ومدربين تدريباً عالياً وذوي خبرة واسعة
+                        <p class="mb-4 pb-2 cairo_font">
+                            {!! app()->getLocale() == 'ar' ? $aboutUs->articles_subject_ar : $aboutUs->articles_subject_en !!}
                         </p>
                         <div class="row g-4 mb-4 pb-2">
                             <div class="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
@@ -238,26 +157,33 @@
     <!-- About End -->
 
 
-    <!-- Service Start -->
+    <!-- خدماتنا -->
     <div class="container-xxl py-5">
         <div class="container">
             <div class="section-title text-center">
-                <h1 class="display-5 mb-5">Our Services</h1>
+                <h1 class="display-5 mb-5 cairo_font">
+                    {{ app()->getLocale() == 'ar' ? $servicesDep->department_title_ar : $servicesDep->department_title_en}}
+                </h1>
             </div>
             <div class="row g-4">
+                @foreach ($services as $item)
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/service-1.jpg" alt="">
+                            <img class="img-fluid" src="{{asset('articles/' . $item->articles_image)}}" alt="">
                         </div>
                         <div class="p-4 text-center border border-5 border-light border-top-0">
-                            <h4 class="mb-3">General Carpentry</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                            <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
+                            <h4 class="mb-3 cairo_font">
+                                {{ app()->getLocale() == 'ar' ? $item->articles_title_ar : $item->articles_title_en}}
+                            </h4>
+                            {{-- <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
+                            <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a> --}}
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                @endforeach
+                
+                {{-- <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="service-item">
                         <div class="overflow-hidden">
                             <img class="img-fluid" src="img/service-2.jpg" alt="">
@@ -316,7 +242,7 @@
                             <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

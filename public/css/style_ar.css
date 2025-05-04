@@ -1,4 +1,8 @@
 /********** Template CSS **********/
+body{
+    font-family: "cairo" !important;
+}
+
 :root {
     --primary: #AB7442;
     --light: #F5F5F5;
