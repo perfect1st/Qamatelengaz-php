@@ -58,7 +58,7 @@
     <!-- Carousel End -->
 
 
-    <!-- Feature Start -->
+    <!-- احصائيات Start -->
     <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-5">
@@ -69,7 +69,7 @@
                         </div>
                         <h1 class="display-1 text-light mb-0">01</h1>
                     </div>
-                    <h5>Creative Designers</h5>
+                    <h5>{{ app()->getLocale() == 'ar' ? $articles->articles_title_ar : $articles->articles_title_en}}</h5>
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
                     <div class="d-flex align-items-center justify-content-between mb-2">
@@ -78,7 +78,7 @@
                         </div>
                         <h1 class="display-1 text-light mb-0">02</h1>
                     </div>
-                    <h5>Quality Products</h5>
+                    <h5>{{ app()->getLocale() == 'ar' ? $articles->articles_address_ar : $articles->articles_address_en}}</h5>
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
                     <div class="d-flex align-items-center justify-content-between mb-2">
@@ -87,7 +87,7 @@
                         </div>
                         <h1 class="display-1 text-light mb-0">03</h1>
                     </div>
-                    <h5>Free Consultation</h5>
+                    <h5>{{ app()->getLocale() == 'ar' ? $articles->articles_subject_ar : $articles->articles_subject_en}}</h5>
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
                     <div class="d-flex align-items-center justify-content-between mb-2">
@@ -96,7 +96,7 @@
                         </div>
                         <h1 class="display-1 text-light mb-0">04</h1>
                     </div>
-                    <h5>Customer Support</h5>
+                    <h5>{{ app()->getLocale() == 'ar' ? $articles->articles_subject_ar2 : $articles->articles_subject_en2}}</h5>
                 </div>
             </div>
         </div>
@@ -106,7 +106,7 @@
 
 
     <!-- نبذة عنا -->
-    <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
+    <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0" id="about">
         <div class="container about px-lg-0">
             <div class="row g-0 mx-lg-0">
                 <div class="col-lg-6 ps-lg-0" style="min-height: 400px;">
@@ -124,7 +124,7 @@
                         <p class="mb-4 pb-2 cairo_font">
                             {!! app()->getLocale() == 'ar' ? $aboutUs->articles_subject_ar : $aboutUs->articles_subject_en !!}
                         </p>
-                        <div class="row g-4 mb-4 pb-2">
+                        {{-- <div class="row g-4 mb-4 pb-2">
                             <div class="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white" style="width: 60px; height: 60px;">
@@ -147,7 +147,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <!-- <a href="" class="btn btn-primary py-3 px-5">Explore More</a> -->
                     </div>
                 </div>
@@ -158,7 +158,7 @@
 
 
     <!-- خدماتنا -->
-    <div class="container-xxl py-5">
+    <div class="container-xxl py-5" id="service">
         <div class="container">
             <div class="section-title text-center">
                 <h1 class="display-5 mb-5 cairo_font">
@@ -173,7 +173,7 @@
                             <img class="img-fluid" src="{{asset('articles/' . $item->articles_image)}}" alt="">
                         </div>
                         <div class="p-4 text-center border border-5 border-light border-top-0">
-                            <h4 class="mb-3 cairo_font">
+                            <h4 class="mb-3 cairo_font text-start">
                                 {{ app()->getLocale() == 'ar' ? $item->articles_title_ar : $item->articles_title_en}}
                             </h4>
                             {{-- <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
@@ -183,66 +183,6 @@
                 </div>
                 @endforeach
                 
-                {{-- <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/service-2.jpg" alt="">
-                        </div>
-                        <div class="p-4 text-center border border-5 border-light border-top-0">
-                            <h4 class="mb-3">Furniture Manufacturing</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                            <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/service-3.jpg" alt="">
-                        </div>
-                        <div class="p-4 text-center border border-5 border-light border-top-0">
-                            <h4 class="mb-3">Furniture Remodeling</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                            <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/service-4.jpg" alt="">
-                        </div>
-                        <div class="p-4 text-center border border-5 border-light border-top-0">
-                            <h4 class="mb-3">Wooden Floor</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                            <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/service-5.jpg" alt="">
-                        </div>
-                        <div class="p-4 text-center border border-5 border-light border-top-0">
-                            <h4 class="mb-3">Wooden Furniture</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                            <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/service-6.jpg" alt="">
-                        </div>
-                        <div class="p-4 text-center border border-5 border-light border-top-0">
-                            <h4 class="mb-3">Custom Work</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                            <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
         </div>
     </div>
@@ -250,23 +190,20 @@
 
 
     <!-- روئيتنا -->
-    <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0 left">
+    <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0 left" id="ourVision">
         <div class="container feature px-lg-0">
             <div class="row g-0 mx-lg-0">
                 <div class="col-lg-6 feature-text py-5 wow fadeIn" data-wow-delay="0.5s">
                     <div class="p-lg-5 ps-lg-0">
                         <div class="section-title text-start">
                             <h1 class="display-5 mb-4">
-                                رؤيتنا
+                                {{ app()->getLocale() == 'ar' ? $ourVision->articles_title_ar : $ourVision->articles_title_en}}
                             </h1>
                         </div>
-                        <p class="mb-4 pb-2">
-                            نحن نؤمن بأن الرؤية القوية هي المحرك الأساسي للنجاح وأن الإصرار العالي والطموح الكبير يمثلان أساس بناء كيان قوي، كما تحدد
-رؤية المملكة العربية السعودية مسارها واستراتيجياتها المستقبلية. وانطلاقاً من هذه الرؤية الواضحة التي وضعها صاحب السمو ولي
-العهد الأمير محمد بن سلمان، فإننا نعمل بشكل جدي على تطوير وتحسين الأساليب وابتكار مفاهيم جديدة تؤدي إلى تحقيق رؤية
-المملكة، وذلك من خلال اعتماد الأساليب الحديثة والمتطورة في خدمات التشغيل والصيانة وتطبيقها بهم على الأرض.
+                        <p class="mb-4 pb-2 text-start">
+                            {!! app()->getLocale() == 'ar' ? $ourVision->articles_subject_ar : $ourVision->articles_subject_en !!}
                         </p>
-                        <div class="row g-4">
+                        {{-- <div class="row g-4">
                             <div class="col-6">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white" style="width: 60px; height: 60px;">
@@ -311,7 +248,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
+                          
+                        
                     </div>
                 </div>
                 <div class="col-lg-6 pe-lg-0" style="min-height: 400px;">
@@ -326,18 +265,18 @@
 
 
     <!-- Projects Start -->
-    <div class="container-xxl py-5">
+    {{-- <div class="container-xxl py-5">
         <div class="container">
             <div class="section-title text-center">
                 <h1 class="display-5 mb-5">Our Projects</h1>
             </div>
             <div class="row mt-n2 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="col-12 text-center">
-                    {{-- <ul class="list-inline mb-5" id="portfolio-flters">
+                    <ul class="list-inline mb-5" id="portfolio-flters">
                         <li class="mx-2 active" data-filter="*">All</li>
                         <li class="mx-2" data-filter=".first">General Carpentry</li>
                         <li class="mx-2" data-filter=".second">Custom Carpentry</li>
-                    </ul> --}}
+                    </ul>
                 </div>
             </div>
             <div class="row g-4 portfolio-container">
@@ -433,12 +372,45 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Projects End -->
 
+    <!-- عملائنا -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="section-title text-center">
+                <h1 class="display-5 mb-5">
+                    {{ app()->getLocale() == 'ar' ? $partenersDep->department_title_ar : $partenersDep->department_title_en}}
+                </h1>
+            </div>
+            <div class="row g-4">
+                @foreach ($parteners as $item)
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="team-item">
+                        <div class="overflow-hidden position-relative">
+                            <img class="img-fluid" src="{{asset('articles/' . $item->articles_image)}}" alt="">
+                            <!-- <div class="team-social">
+                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
+                            </div> -->
+                        </div>
+                        <!-- <div class="text-center border border-5 border-light border-top-0 p-4">
+                            <h5 class="mb-0">Full Name</h5>
+                            <small>Designation</small>
+                        </div> -->
+                    </div>
+                </div>
+                @endforeach
+                
+             
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
 
     <!-- هدفنا -->
-    <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
+    <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0" id="contact">
         <div class="container quote px-lg-0">
             <div class="row g-0 mx-lg-0">
                 <div class="col-lg-6 ps-lg-0" style="min-height: 400px;">
@@ -450,10 +422,14 @@
                     <div class="p-lg-5 pe-lg-0">
                         <div class="section-title text-start">
                             <h1 class="display-5 mb-4">
-                                هدفنا
+                                {{app()->getLocale() == 'ar' ? $ourGoal->articles_title_ar  : $ourGoal->articles_title_en }}
                             </h1>
                         </div>
-                        <p class="mb-4 pb-2">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo erat amet</p>
+
+                        <p class="mb-4 pb-2">
+                            {!! app()->getLocale() == 'ar' ? $ourGoal->articles_subject_ar : $ourGoal->articles_subject_en !!}
+                        </p>
+
                         <form>
                             <div class="row g-3">
                                 <div class="col-12 col-sm-6">
@@ -462,22 +438,25 @@
                                 <div class="col-12 col-sm-6">
                                     <input type="email" class="form-control border-0" placeholder="البريد الالكتروني" style="height: 55px;">
                                 </div>
-                                <div class="col-12 col-sm-6">
+                                <div class="col-12">
                                     <input type="text" class="form-control border-0" placeholder="رقم الجوال" style="height: 55px;">
                                 </div>
-                                <div class="col-12 col-sm-6">
+                                {{-- <div class="col-12 col-sm-6">
                                     <select class="form-select border-0" style="height: 55px;">
                                         <option selected>Select A Service</option>
                                         <option value="1">Service 1</option>
                                         <option value="2">Service 2</option>
                                         <option value="3">Service 3</option>
                                     </select>
+                                </div> --}}
+                                <div class="col-12">
+                                    <textarea class="form-control border-0" placeholder="{{ app()->getLocale() == 'ar' ? "الرسالة" : "Message"}}"></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <textarea class="form-control border-0" placeholder="Special Note"></textarea>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Submit</button>
+                                    <button class="btn btn-primary w-100 py-3" type="submit">
+                                        {{ app()->getLocale() == 'ar' ? "ارسال" : "Send" }}
+
+                                    </button>
                                 </div>
                             </div>
                         </form>
@@ -489,87 +468,11 @@
     <!-- Quote End -->
 
 
-    <!-- عملائنا -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="section-title text-center">
-                <h1 class="display-5 mb-5">
-                    عملائنا
-                </h1>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="team-item">
-                        <div class="overflow-hidden position-relative">
-                            <img class="img-fluid" src="img/team-1.jpg" alt="">
-                            <!-- <div class="team-social">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                            </div> -->
-                        </div>
-                        <!-- <div class="text-center border border-5 border-light border-top-0 p-4">
-                            <h5 class="mb-0">Full Name</h5>
-                            <small>Designation</small>
-                        </div> -->
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="team-item">
-                        <div class="overflow-hidden position-relative">
-                            <img class="img-fluid" src="img/team-2.jpg" alt="">
-                            <!-- <div class="team-social">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                            </div> -->
-                        </div>
-                        <!-- <div class="text-center border border-5 border-light border-top-0 p-4">
-                            <h5 class="mb-0">Full Name</h5>
-                            <small>Designation</small>
-                        </div> -->
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="team-item">
-                        <div class="overflow-hidden position-relative">
-                            <img class="img-fluid" src="img/team-3.jpg" alt="">
-                            <!-- <div class="team-social">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                            </div> -->
-                        </div>
-                        <!-- <div class="text-center border border-5 border-light border-top-0 p-4">
-                            <h5 class="mb-0">Full Name</h5>
-                            <small>Designation</small>
-                        </div> -->
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="team-item">
-                        <div class="overflow-hidden position-relative">
-                            <img class="img-fluid" src="img/team-4.jpg" alt="">
-                            <!-- <div class="team-social">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                            </div> -->
-                        </div>
-                        <!-- <div class="text-center border border-5 border-light border-top-0 p-4">
-                            <h5 class="mb-0">Full Name</h5>
-                            <small>Designation</small>
-                        </div> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Team End -->
+    
 
 
     <!-- Testimonial Start -->
-    <div class="container-xxl py-5 wow fadeInUp left" data-wow-delay="0.1s">
+    {{-- <div class="container-xxl py-5 wow fadeInUp left" data-wow-delay="0.1s">
         <div class="container">
             <div class="section-title text-center">
                 <h1 class="display-5 mb-5">Testimonial</h1>
@@ -601,67 +504,8 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Testimonial End -->
 
-
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-4 col-md-6">
-                    <h4 class="text-light mb-4">العنوان</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <h4 class="text-light mb-4">خدماتنا</h4>
-                    <a class="btn btn-link" href="">خدمات </a>
-                    <a class="btn btn-link" href="">Furniture Remodeling</a>
-                    <a class="btn btn-link" href="">Wooden Floor</a>
-                    <a class="btn btn-link" href="">Wooden Furniture</a>
-                    <a class="btn btn-link" href="">Custom Carpentry</a>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <h4 class="text-light mb-4"> روابط سريعة </h4>
-                    <a class="btn btn-link" href=""> نبذة عنا </a>
-                    <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Our Services</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">Support</a>
-                </div>
-                <!-- <div class="col-lg-3 col-md-6">
-                    <h4 class="text-light mb-4">Newsletter</h4>
-                    <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
-                    <div class="position-relative mx-auto" style="max-width: 400px;">
-                        <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
-                    </div>
-                </div> -->
-            </div>
-        </div>
-        <!-- <div class="container">
-            <div class="copyright">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-    </div>
-    <!-- Footer End -->
-
-
-    @endsection
+@endsection
 

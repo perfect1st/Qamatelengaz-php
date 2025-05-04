@@ -19,7 +19,22 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+  function getPagesData(){
+    $setting = Setting::find(1);
+    $aboutUs = Article::find(1);
+    $servicesDep=Department::find(2);
+    $ourVision = Article::find(2);
+    $ourMission = Article::find(20);
 
+    return [
+      'setting' => $setting,
+      'aboutUs' => $aboutUs,
+      'servicesDep' => $servicesDep,
+      'ourVision' => $ourVision,
+      'ourMission' => $ourMission,
+  ];
+
+  }
 
 Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 
@@ -32,37 +47,53 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 
         //  $offers_title = Article::find(4);
         //  $property_title = Article::find(5);
-          $setting = Setting::find(1);
-          $aboutUs = Article::find(1);
-           $ourVision = Article::find(2);
+         // $setting = Setting::find(1);
+        //  $aboutUs = Article::find(1);
+         //  $ourVision = Article::find(2);
+        // $ourMission = Article::find(20);
+        $data = getPagesData();
            $servicesDep=Department::find(2);
            $services=Department::find(2)->articles->where('articles_isactive', 'active');
-        //  $gallary = Department::find(4)->articles->where('articles_isactive', 'active');
+           $partenersDep=Department::find(3);
+          $parteners = Department::find(3)->articles->where('articles_isactive', 'active');
+          $ourGoal = Article::find(3);
+          $articles = Article::find(19);
+         
         //  $offers = Department::find(3)->articles->where('articles_isactive', 'active');
         //  $buildings = Department::find(5)->articles->where('articles_isactive', 'active');
 
         // $newsbutton = Department::find(7)->articles->where('articles_isactive', 'active')->take(2);
 
         return view('welcome', [
-           // "slider" => $slider,
-            // "banner" => $banner,
-            // "offers_title" => $offers_title,
-            // "property_title" => $property_title,
-             "aboutUs" => $aboutUs,
-             "ourVision" => $ourVision,
-             "setting" => $setting,
+          
+
+            //  "aboutUs" => $aboutUs,
+            //  "ourVision" => $ourVision,
+            //  "setting" => $setting,
+            //   "ourMission" => $ourMission,
+              ...$data,
              "servicesDep" => $servicesDep,
              "services" => $services,
+             "partenersDep" => $partenersDep,
+             "parteners" => $parteners,
+             "ourGoal" => $ourGoal,
+             "articles" => $articles,
             // "settingArticle" => $settingArticle,
             // "newsbutton" => $newsbutton
         ]);
 
        // return view('welcome');
-    });
+    })->name('home');
 
-    Route::get('/departmentDetails/{id}',function(Request $request){
-            return $request->id;
-    });
+    Route::get('/ourMission',function(Request $request){
+      $data = getPagesData();
+      $ourMission=Article::find(20);
+
+            return view('ourMission',[
+                ...$data,
+                "ourMission"=>$ourMission
+            ]);
+    })->name('ourMission');
 
    
 
