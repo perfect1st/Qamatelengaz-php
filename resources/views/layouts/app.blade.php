@@ -7,7 +7,7 @@
     <meta content="{{$setting->setting_description}}" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="{{'articles/'.$logo->articles_image}}" rel="icon">
 
     <!-- Google Web Fonts -->
     {{-- <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -79,7 +79,7 @@
                     <strong class="fa fa-phone-alt text-primary me-2"></strong>
                     <strong>{{$setting->setting_sitetell1}}</strong>
                 </div>
-                <div class="h-100 d-inline-flex align-items-center">
+                <div class="h-100 d-inline-flex align-items-center gap-1">
                     <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-facebook-f"></i></a>
                     <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-linkedin-in"></i></a>
@@ -185,7 +185,7 @@
                 </div> --}}
                 
                 <div class="col-lg-6 col-md-6">
-                    <h4 class="text-light mb-4"> روابط سريعة </h4>
+                    <h4 class="text-light mb-4">{{ app()->getLocale() == 'ar' ? "روابط سريعة" : "Quick Links"}}  </h4>
                     <a class="btn btn-link" href="{{ LaravelLocalization::getLocalizedURL(null, '/#about') }}">
                           {{app()->getLocale() == 'ar' ? $aboutUs->articles_title_ar  : $aboutUs->articles_title_en }} 
                     </a>

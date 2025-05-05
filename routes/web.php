@@ -27,6 +27,9 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
     $ourVision = Article::find(2);
     $ourMission = Article::find(20);
     $partenersDep=Department::find(3);
+    $logo=Article::find(24);
+
+   // dd($logo);
 
     return [
       'setting' => $setting,
@@ -34,7 +37,8 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
       'servicesDep' => $servicesDep,
       'ourVision' => $ourVision,
       'ourMission' => $ourMission,
-      'partenersDep' => $partenersDep
+      'partenersDep' => $partenersDep,
+      'logo' => $logo
   ];
 
   }
