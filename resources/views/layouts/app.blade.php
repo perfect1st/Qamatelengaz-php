@@ -93,7 +93,7 @@
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
-        <a href="{{ LaravelLocalization::getLocalizedURL(null, '') }}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <a href="{{ LaravelLocalization::getLocalizedURL(null, '/') }}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <h2 class="m-0 text-primary">
                 {{app()->getLocale() == 'ar' ? $setting->setting_title_ar  : $setting->setting_title_en }}
             </h2>
@@ -103,7 +103,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="{{ LaravelLocalization::getLocalizedURL(null, '') }}" onclick="controlActive(event)" class="nav-item nav-link {{ Route::currentRouteName() == 'home' ? 'active' : '' }}">الرئيسية</a>
+                <a href="{{ LaravelLocalization::getLocalizedURL(null, '/') }}" onclick="controlActive(event)" class="nav-item nav-link {{ Route::currentRouteName() == 'home' ? 'active' : '' }}">الرئيسية</a>
                 <a href="{{ LaravelLocalization::getLocalizedURL(null, '/#about') }}" onclick="controlActive(event)" class="nav-item nav-link">
                     {{app()->getLocale() == 'ar' ? $aboutUs->articles_title_ar  : $aboutUs->articles_title_en }}
                 </a>
@@ -113,6 +113,10 @@
 
                 <a href="{{ LaravelLocalization::getLocalizedURL(null, '/#ourVision') }}" onclick="controlActive(event)" class="nav-item nav-link">
                     {{ app()->getLocale() == 'ar' ? $ourVision->articles_title_ar : $ourVision->articles_title_en}}
+                </a>
+
+                <a href="{{ LaravelLocalization::getLocalizedURL(null, '/#ourParteners') }}" onclick="controlActive(event)" class="nav-item nav-link">
+                    {{ app()->getLocale() == 'ar' ? $partenersDep->department_title_ar : $partenersDep->department_title_en}}
                 </a>
 
                 <a href="{{ LaravelLocalization::getLocalizedURL(null, '/ourMission') }}" class="nav-item nav-link {{ Route::currentRouteName() == 'ourMission' ? 'active' : '' }} ">
@@ -157,7 +161,7 @@
     <div class="container-fluid bg-dark text-light footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="row g-5">
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-6 col-md-6">
                     <h4 class="text-light mb-4">العنوان</h4>
                     <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>
                         {{app()->getLocale() == 'ar' ? $setting->setting_site_address_ar  : $setting->setting_site_address_en }}
@@ -171,22 +175,41 @@
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
+                {{-- <div class="col-lg-4 col-md-6">
                     <h4 class="text-light mb-4">خدماتنا</h4>
                     <a class="btn btn-link" href="">خدمات </a>
                     <a class="btn btn-link" href="">Furniture Remodeling</a>
                     <a class="btn btn-link" href="">Wooden Floor</a>
                     <a class="btn btn-link" href="">Wooden Furniture</a>
                     <a class="btn btn-link" href="">Custom Carpentry</a>
-                </div>
-                <div class="col-lg-4 col-md-6">
+                </div> --}}
+                
+                <div class="col-lg-6 col-md-6">
                     <h4 class="text-light mb-4"> روابط سريعة </h4>
-                    <a class="btn btn-link" href=""> نبذة عنا </a>
-                    <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Our Services</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">Support</a>
+                    <a class="btn btn-link" href="{{ LaravelLocalization::getLocalizedURL(null, '/#about') }}">
+                          {{app()->getLocale() == 'ar' ? $aboutUs->articles_title_ar  : $aboutUs->articles_title_en }} 
+                    </a>
+                    
+                    <a class="btn btn-link" href="{{ LaravelLocalization::getLocalizedURL(null, '/#service') }}">
+                        {{ app()->getLocale() == 'ar' ? $servicesDep->department_title_ar : $servicesDep->department_title_en}}
+                    </a>
+                    <a class="btn btn-link" href="{{ LaravelLocalization::getLocalizedURL(null, '/#ourVision') }}">
+                        {{ app()->getLocale() == 'ar' ? $ourVision->articles_title_ar : $ourVision->articles_title_en}}
+                    </a>
+
+                    <a class="btn btn-link" href="{{ LaravelLocalization::getLocalizedURL(null, '/ourMission') }}">
+                        {{ app()->getLocale() == 'ar' ? $ourMission->articles_title_ar : $ourMission->articles_title_en}}
+                    </a>
+
+                    <a class="btn btn-link" href="{{ LaravelLocalization::getLocalizedURL(null, '/#ourParteners') }}">
+                        {{ app()->getLocale() == 'ar' ? $partenersDep->department_title_ar : $partenersDep->department_title_en}}
+                    </a>
+
+                    <a class="btn btn-link" href="{{ LaravelLocalization::getLocalizedURL(null, '/#contact') }}">
+                        {{ app()->getLocale() == 'ar' ? "تواصل معنا" : "Contact Us"}}
+                    </a>
                 </div>
+
                 <!-- <div class="col-lg-3 col-md-6">
                     <h4 class="text-light mb-4">Newsletter</h4>
                     <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>

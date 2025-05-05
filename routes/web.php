@@ -7,6 +7,7 @@ use App\Models\Department;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -25,6 +26,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
     $servicesDep=Department::find(2);
     $ourVision = Article::find(2);
     $ourMission = Article::find(20);
+    $partenersDep=Department::find(3);
 
     return [
       'setting' => $setting,
@@ -32,6 +34,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
       'servicesDep' => $servicesDep,
       'ourVision' => $ourVision,
       'ourMission' => $ourMission,
+      'partenersDep' => $partenersDep
   ];
 
   }
@@ -40,17 +43,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 
 
     Route::get('/', function () {
-      //  return 'oooooooooooooo';
-        //  $banner = Article::find(3);
-         
-        //  $slider = Department::find(1)->articles->where('articles_isactive', 'active');
-
-        //  $offers_title = Article::find(4);
-        //  $property_title = Article::find(5);
-         // $setting = Setting::find(1);
-        //  $aboutUs = Article::find(1);
-         //  $ourVision = Article::find(2);
-        // $ourMission = Article::find(20);
+     
         $data = getPagesData();
            $servicesDep=Department::find(2);
            $services=Department::find(2)->articles->where('articles_isactive', 'active');
@@ -58,19 +51,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
           $parteners = Department::find(3)->articles->where('articles_isactive', 'active');
           $ourGoal = Article::find(3);
           $articles = Article::find(19);
+          $sliders = Department::find(4)->articles->where('articles_isactive', 'active');
          
-        //  $offers = Department::find(3)->articles->where('articles_isactive', 'active');
-        //  $buildings = Department::find(5)->articles->where('articles_isactive', 'active');
-
-        // $newsbutton = Department::find(7)->articles->where('articles_isactive', 'active')->take(2);
+       
 
         return view('welcome', [
-          
-
-            //  "aboutUs" => $aboutUs,
-            //  "ourVision" => $ourVision,
-            //  "setting" => $setting,
-            //   "ourMission" => $ourMission,
               ...$data,
              "servicesDep" => $servicesDep,
              "services" => $services,
@@ -78,6 +63,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
              "parteners" => $parteners,
              "ourGoal" => $ourGoal,
              "articles" => $articles,
+             "sliders" => $sliders
             // "settingArticle" => $settingArticle,
             // "newsbutton" => $newsbutton
         ]);
@@ -126,25 +112,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 
         // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
-
-
-        // //orders pages
-        // Route::get('/searchorders', [OrderController::class, 'searchOrders'])->name('searchOrders');
-        // Route::get('/sortorders', [OrderController::class, 'sortOrders'])->name('sortOrders');
-        // //pdf and excel routes
-        // Route::get('/exportOrder', [OrderController::class, 'exportOrder'])->name('exportOrder');
-        // Route::get('/downloadpdfOrder', [OrderController::class, 'downloadpdfOrder'])->name('downloadpdfOrder');
-
-        // Route::get('/searchTestominals', [TestominalsController::class, 'searchTestominals'])->name('searchTestominals');
-
-        //  //sortContactRequests
-        // Route::get('/sortContactRequests', [Contact_UsController::class, 'sortContactRequests'])->name('sortContactRequests');
-        //  //searchContacts
-        // Route::get('/searchContacts', [Contact_UsController::class, 'searchContacts'])->name('searchContacts');
-
-        //    Route::get('/exportContacts', [Contact_UsController::class, 'exportContacts'])->name('exportContacts');
-        // Route::get('/downloadpdfContacts', [Contact_UsController::class, 'downloadpdfContacts'])->name('downloadpdfContacts');
 
 
     });
